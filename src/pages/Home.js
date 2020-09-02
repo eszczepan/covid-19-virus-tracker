@@ -8,6 +8,18 @@ import { sortData } from "../utils";
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
+  margin-bottom: 1rem;
+`;
+
+const StyledWrapper = styled.div`
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  margin-right: 1.5rem;
+  @media (max-width: 1024px) {
+    margin-right: 0;
+    margin-bottom: 2rem;
+  }
 `;
 
 const Home = () => {
@@ -59,7 +71,7 @@ const Home = () => {
 
   return (
     <MainTemplate>
-      <div>
+      <StyledWrapper>
         <StyledForm>
           <label htmlFor="countries">Stats Overview</label>
           <select
@@ -79,7 +91,7 @@ const Home = () => {
           </select>
         </StyledForm>
         <MainTable countryInfo={countryInfo} />
-      </div>
+      </StyledWrapper>
       <SideTable countries={tableData} />
     </MainTemplate>
   );

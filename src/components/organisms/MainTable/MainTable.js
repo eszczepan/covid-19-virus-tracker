@@ -3,17 +3,6 @@ import styled from "styled-components";
 import InfoBox from "../../molecules/InfoBox/InfoBox";
 import Map from "../../molecules/Map/Map";
 
-const StyledWrapper = styled.div`
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-  margin-right: 1.5rem;
-  @media (max-width: 1060px) {
-    margin-right: 0;
-    margin-bottom: 2rem;
-  }
-`;
-
 const InfoHeader = styled.div`
   display: flex;
   align-items: center;
@@ -22,7 +11,7 @@ const InfoHeader = styled.div`
   border-radius: 10px;
   padding: 1rem;
   margin-bottom: 1rem;
-  @media (max-width: 830px) {
+  @media (max-width: 1200px) {
     flex-direction: column;
   }
 `;
@@ -42,7 +31,7 @@ const StyledInnerColumn = styled.div`
 
 const MainTable = ({ countryInfo }) => {
   return (
-    <StyledWrapper>
+    <>
       <InfoHeader>
         <StyledColumn>
           <StyledTitle>Total</StyledTitle>
@@ -62,7 +51,7 @@ const MainTable = ({ countryInfo }) => {
         </StyledColumn>
       </InfoHeader>
       <Map />
-    </StyledWrapper>
+    </>
   );
 };
 

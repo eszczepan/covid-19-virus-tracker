@@ -6,14 +6,15 @@ import { theme } from "../theme/mainTheme";
 import Navbar from "../components/organisms/Navbar/Navbar";
 
 const StyledWrapper = styled.div`
-  max-width: 120rem;
+  max-width: 140rem;
   margin: 0 auto;
   padding: 2rem;
 `;
 
 const StyledMain = styled.main`
   display: flex;
-  @media (max-width: 1060px) {
+  justify-content: space-between;
+  @media (max-width: 1023px) {
     flex-direction: column;
   }
 `;

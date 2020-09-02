@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import LineGraph from "../../molecules/LineGraph/LineGraph";
 
 const StyledWrapper = styled.div`
   width: 30%;
-  height: 80vh;
   border: 1px solid lightgray;
   border-radius: 10px;
   padding: 2rem;
-  @media (max-width: 1200px) {
+  @media (max-width: 1023px) {
     width: 100%;
   }
 `;
@@ -17,13 +17,18 @@ const StyledList = styled.ul`
   flex-direction: column;
 `;
 
+const StyledTitle = styled.h3`
+  margin-bottom: 2.5rem;
+  text-align: center;
+`;
+
 const StyledTable = styled.table`
   width: 100%;
 `;
 const StyledDiv = styled.div`
   height: 50rem;
   overflow: scroll;
-  margin: 1.2rem 0;
+  margin-bottom: 3rem;
 `;
 const StyledTableRow = styled.tr`
   width: 100%;
@@ -43,7 +48,7 @@ const SideTable = ({ countries }) => {
   return (
     <StyledWrapper>
       <StyledList>
-        <h3>Live Cases by Country</h3>
+        <StyledTitle>Live Cases by Country</StyledTitle>
         <StyledDiv>
           <StyledTable>
             <thead>
@@ -53,18 +58,21 @@ const SideTable = ({ countries }) => {
               </tr>
             </thead>
             <tbody>
-              {countries.map(({ country, cases }) => (
+              {countries.map(({ country, cases, recovered, deaths }) => (
                 <StyledTableRow key={country}>
                   <td>{country}</td>
                   <StyledTableData>
                     <strong>{cases}</strong>
                   </StyledTableData>
+                  {/* <td>{recovered}</td>
+                  <td>{deaths}</td> */}
                 </StyledTableRow>
               ))}
             </tbody>
           </StyledTable>
         </StyledDiv>
-        <h3>WorldWide new cases</h3>
+        <StyledTitle>WorldWide new cases</StyledTitle>
+        <LineGraph />
       </StyledList>
     </StyledWrapper>
   );
