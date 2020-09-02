@@ -27,6 +27,11 @@ const Home = () => {
   const [country, setCountry] = useState("ALL");
   const [countryInfo, setCountryInfo] = useState({});
   const [tableData, setTableData] = useState([]);
+  const [mapCenter, setMapCenter] = useState({
+    lat: 50.064651,
+    lng: 19.944981,
+  });
+  const [mapZoom, setMapZoom] = useState(3);
 
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
@@ -66,6 +71,8 @@ const Home = () => {
       .then((data) => {
         setCountry(countryCode);
         setCountryInfo(data);
+        setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+        setMapZoom(4);
       });
   };
 
@@ -90,7 +97,11 @@ const Home = () => {
             ))}
           </select>
         </StyledForm>
-        <MainTable countryInfo={countryInfo} />
+        <MainTable
+          countryInfo={countryInfo}
+          mapCenter={mapCenter}
+          mapZoom={mapZoom}
+        />
       </StyledWrapper>
       <SideTable countries={tableData} />
     </MainTemplate>

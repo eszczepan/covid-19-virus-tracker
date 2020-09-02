@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import InfoBox from "../../molecules/InfoBox/InfoBox";
 import Map from "../../molecules/Map/Map";
+import "leaflet/dist/leaflet.css";
 
 const InfoHeader = styled.div`
   display: flex;
@@ -29,7 +30,7 @@ const StyledInnerColumn = styled.div`
   display: flex;
 `;
 
-const MainTable = ({ countryInfo }) => {
+const MainTable = ({ countryInfo, mapCenter, mapZoom }) => {
   return (
     <>
       <InfoHeader>
@@ -50,7 +51,7 @@ const MainTable = ({ countryInfo }) => {
           </StyledInnerColumn>
         </StyledColumn>
       </InfoHeader>
-      <Map />
+      <Map center={mapCenter} zoom={mapZoom} />
     </>
   );
 };
