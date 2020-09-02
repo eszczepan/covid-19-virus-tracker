@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Map as LeafletMap, TileLayer } from "react-leaflet";
+import { showDataOnMap } from "../../../utils";
 
 const StyledDiv = styled.div`
   height: 100%;
@@ -16,7 +17,7 @@ const StyledDiv = styled.div`
   }
 `;
 
-const Map = ({ center, zoom }) => {
+const Map = ({ center, zoom, countries, casesType }) => {
   return (
     <StyledDiv>
       <LeafletMap center={center} zoom={zoom}>
@@ -24,6 +25,7 @@ const Map = ({ center, zoom }) => {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        {showDataOnMap(countries, casesType)}
       </LeafletMap>
     </StyledDiv>
   );

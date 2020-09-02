@@ -28,10 +28,11 @@ const Home = () => {
   const [countryInfo, setCountryInfo] = useState({});
   const [tableData, setTableData] = useState([]);
   const [mapCenter, setMapCenter] = useState({
-    lat: 50.064651,
-    lng: 19.944981,
+    lat: 40.416775,
+    lng: -3.70379,
   });
-  const [mapZoom, setMapZoom] = useState(3);
+  const [mapZoom, setMapZoom] = useState(2);
+  const [mapCountries, setMapCountries] = useState([]);
 
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
@@ -53,6 +54,7 @@ const Home = () => {
           const sortedData = sortData(data);
           setTableData(sortedData);
           setCountries(countries);
+          setMapCountries(data);
         });
     };
     getCountriesData();
@@ -101,6 +103,7 @@ const Home = () => {
           countryInfo={countryInfo}
           mapCenter={mapCenter}
           mapZoom={mapZoom}
+          mapCountries={mapCountries}
         />
       </StyledWrapper>
       <SideTable countries={tableData} />
