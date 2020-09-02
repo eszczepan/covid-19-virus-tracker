@@ -13,7 +13,7 @@ const StyledWrapper = styled.div`
 
 const StyledMain = styled.main`
   display: flex;
-  @media (max-width: 1200px) {
+  @media (max-width: 1060px) {
     flex-direction: column;
   }
 `;
