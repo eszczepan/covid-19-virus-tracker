@@ -9,11 +9,15 @@ const StyledWrapper = styled.div`
   max-width: 140rem;
   margin: 0 auto;
   padding: 2rem;
+  @media (max-width: 1400px) {
+    max-width: 100rem;
+  }
 `;
 
 const StyledMain = styled.main`
   display: flex;
   justify-content: space-between;
+
   @media (max-width: 1023px) {
     flex-direction: column;
   }
@@ -24,8 +28,8 @@ const MainTemplate = ({ children }) => {
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
+        <Navbar />
         <StyledWrapper>
-          <Navbar />
           <StyledMain>{children}</StyledMain>
         </StyledWrapper>
       </ThemeProvider>

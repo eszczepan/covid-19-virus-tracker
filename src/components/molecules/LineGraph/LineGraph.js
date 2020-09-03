@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import styled from "styled-components";
 import { Line } from "react-chartjs-2";
 import numeral from "numeral";
+import { CasesTypeContext } from "../../../context";
 
 const options = {
   legend: {
@@ -46,8 +48,19 @@ const options = {
   },
 };
 
-const LineGraph = ({ casesType = "cases" }) => {
+const StyledTitle = styled.h3`
+  margin-bottom: 2.5rem;
+  text-align: center;
+`;
+
+const StyledDiv = styled.div`
+  min-height: 20rem;
+`;
+
+const LineGraph = () => {
   const [data, setData] = useState({});
+  const { cases } = useContext(CasesTypeContext);
+  const [casesType] = cases;
 
   const buildChartData = (data, casesType = "cases") => {
     const chartData = [];
@@ -70,7 +83,7 @@ const LineGraph = ({ casesType = "cases" }) => {
       await fetch("https://disease.sh/v3/covid-19/historical/all?lastdays=120")
         .then((response) => response.json())
         .then((data) => {
-          const chartData = buildChartData(data);
+          const chartData = buildChartData(data, casesType);
           setData(chartData);
         });
     };
@@ -78,22 +91,25 @@ const LineGraph = ({ casesType = "cases" }) => {
   }, [casesType]);
 
   return (
-    <div>
-      {data?.length > 0 && (
-        <Line
-          data={{
-            datasets: [
-              {
-                backgroundColor: "#f5f5ac",
-                borderColor: "abc389",
-                data: data,
-              },
-            ],
-          }}
-          options={options}
-        />
-      )}
-    </div>
+    <>
+      <StyledTitle>WorldWide new {casesType}</StyledTitle>
+      <StyledDiv>
+        {data?.length > 0 && (
+          <Line
+            data={{
+              datasets: [
+                {
+                  backgroundColor: "rgba(204, 16, 52, 0.4)",
+                  borderColor: "#CC1034",
+                  data: data,
+                },
+              ],
+            }}
+            options={options}
+          />
+        )}
+      </StyledDiv>
+    </>
   );
 };
 

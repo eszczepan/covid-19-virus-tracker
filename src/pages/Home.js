@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { CasesProvider } from "../context";
 import MainTemplate from "../templates/MainTemplate";
 import MainTable from "../components/organisms/MainTable/MainTable";
 import SideTable from "../components/organisms/SideTable/SideTable";
@@ -73,40 +74,50 @@ const Home = () => {
       .then((data) => {
         setCountry(countryCode);
         setCountryInfo(data);
-        setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
-        setMapZoom(4);
+        if (countryCode === "ALL") {
+          setMapCenter({
+            lat: 40.416775,
+            lng: -3.70379,
+          });
+          setMapZoom(2);
+        } else {
+          setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+          setMapZoom(4);
+        }
       });
   };
 
   return (
     <MainTemplate>
-      <StyledWrapper>
-        <StyledForm>
-          <label htmlFor="countries">Stats Overview</label>
-          <select
-            name="countries"
-            id="countries"
-            value={country}
-            onChange={onCountryChange}
-          >
-            <option value="ALL" key="Global">
-              Global
-            </option>
-            {countries.map((country) => (
-              <option value={country.value} key={country.name}>
-                {country.name}
+      <CasesProvider>
+        <StyledWrapper>
+          <StyledForm>
+            <label htmlFor="countries">Stats Overview</label>
+            <select
+              name="countries"
+              id="countries"
+              value={country}
+              onChange={onCountryChange}
+            >
+              <option value="ALL" key="Global">
+                Global
               </option>
-            ))}
-          </select>
-        </StyledForm>
-        <MainTable
-          countryInfo={countryInfo}
-          mapCenter={mapCenter}
-          mapZoom={mapZoom}
-          mapCountries={mapCountries}
-        />
-      </StyledWrapper>
-      <SideTable countries={tableData} />
+              {countries.map((country) => (
+                <option value={country.value} key={country.name}>
+                  {country.name}
+                </option>
+              ))}
+            </select>
+          </StyledForm>
+          <MainTable
+            countryInfo={countryInfo}
+            mapCenter={mapCenter}
+            mapZoom={mapZoom}
+            mapCountries={mapCountries}
+          />
+        </StyledWrapper>
+        <SideTable countries={tableData} />
+      </CasesProvider>
     </MainTemplate>
   );
 };

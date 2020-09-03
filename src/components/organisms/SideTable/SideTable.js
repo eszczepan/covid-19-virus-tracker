@@ -1,8 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import numeral from "numeral";
+
 import LineGraph from "../../molecules/LineGraph/LineGraph";
 
 const StyledWrapper = styled.div`
+  background-color: white;
   width: 30%;
   border: 1px solid lightgray;
   border-radius: 10px;
@@ -26,9 +29,15 @@ const StyledTable = styled.table`
   width: 100%;
 `;
 const StyledDiv = styled.div`
-  height: 50rem;
+  height: 45rem;
   overflow: scroll;
   margin-bottom: 3rem;
+  @media (max-width: 1400px) {
+    height: 35rem;
+  }
+  @media (max-width: 1023px) {
+    height: 45rem;
+  }
 `;
 const StyledTableRow = styled.tr`
   width: 100%;
@@ -62,16 +71,13 @@ const SideTable = ({ countries }) => {
                 <StyledTableRow key={country}>
                   <td>{country}</td>
                   <StyledTableData>
-                    <strong>{cases}</strong>
+                    <strong>{numeral(cases).format("0,000,00'")}</strong>
                   </StyledTableData>
-                  {/* <td>{recovered}</td>
-                  <td>{deaths}</td> */}
                 </StyledTableRow>
               ))}
             </tbody>
           </StyledTable>
         </StyledDiv>
-        <StyledTitle>WorldWide new cases</StyledTitle>
         <LineGraph />
       </StyledList>
     </StyledWrapper>
