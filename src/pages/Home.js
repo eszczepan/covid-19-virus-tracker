@@ -86,7 +86,6 @@ const Home = () => {
         }
       });
   };
-
   return (
     <MainTemplate>
       <CasesProvider>

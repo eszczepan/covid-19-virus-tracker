@@ -13,30 +13,39 @@ const StyledBox = styled.div`
   border-radius: 3px;
   text-align: center;
   cursor: pointer;
-  span {
+  p {
     flex: 1;
     margin: 0.3rem 0;
     strong {
       font-size: 2.3rem;
-
       color: ${({ isRed }) => (isRed ? "#CC1034" : "lightgreen")};
+      @media (max-width: 760px) {
+        font-size: 1.6rem;
+      }
+    }
+    @media (max-width: 760px) {
+      font-size: 1.2rem;
     }
   }
   &:not(:last-child) {
     margin-right: 0.8rem;
+  }
+
+  @media (max-width: 760px) {
+    padding: 0.5rem 1rem;
   }
 `;
 
 const InfoBox = ({ title, cases, today, active, isRed, ...props }) => {
   return (
     <StyledBox onClick={props.onClick} active={active} isRed={isRed}>
-      <span>
+      <p>
         {title === "Cases" && "Coronavirus"} {title}
-      </span>
-      <span>
+      </p>
+      <p>
         <strong>{today}</strong>
-      </span>
-      <span>{cases} Total</span>
+      </p>
+      <p>{cases} Total</p>
     </StyledBox>
   );
 };

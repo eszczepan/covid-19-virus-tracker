@@ -11,7 +11,11 @@ const NavListItem = styled.li`
   text-decoration: none;
   color: black;
   :hover {
-    background-color: #f2f2f2;
+    background-color: #cc1034;
+    color: #fff;
+  }
+  @media (max-width: 1023px) {
+    text-align: center;
   }
 `;
 
