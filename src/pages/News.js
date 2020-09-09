@@ -31,7 +31,7 @@ const News = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    fetch("http://api.coronatracker.com/news/trending")
+    fetch("https://api.coronatracker.com/news/trending")
       .then((response) => response.json())
       .then((data) => {
         setNews(data.items);
@@ -40,7 +40,7 @@ const News = () => {
 
   useEffect(() => {
     const getCountriesData = async () => {
-      await fetch("http://api.coronatracker.com/v2/analytics/country")
+      await fetch("https://api.coronatracker.com/v2/analytics/country")
         .then((response) => response.json())
         .then((data) => {
           const countries = data.map((country) => ({
@@ -64,8 +64,8 @@ const News = () => {
     console.log(country);
     const url =
       country === "ALL"
-        ? "http://api.coronatracker.com/news/trending"
-        : `http://api.coronatracker.com/news/trending?&country=${country}`;
+        ? "https://api.coronatracker.com/news/trending"
+        : `https://api.coronatracker.com/news/trending?&country=${country}`;
 
     await fetch(url)
       .then((response) => response.json())
