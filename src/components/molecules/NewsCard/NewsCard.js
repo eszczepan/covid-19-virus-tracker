@@ -67,7 +67,7 @@ const StyledLink = styled.a`
 const NewsCard = ({ title, description, author, image, link, site }) => {
   return (
     <StyledNewsCard>
-      {image && <img src={image} alt={description} />}
+      {image && <img src={image} alt={site} />}
       <StyledWrapper>
         <StyledLink href={link} target="_blank">
           <h2>{title}</h2>
