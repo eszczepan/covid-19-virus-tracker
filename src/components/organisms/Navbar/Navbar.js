@@ -13,12 +13,13 @@ const Nav = styled.nav`
 
 const StyledWrapper = styled.div`
   max-width: 140rem;
-  padding: 2rem;
   width: 100%;
   display: flex;
+  align-items: center;
   margin: 0 auto;
   @media (max-width: 1023px) {
     justify-content: space-between;
+    padding: 2rem;
   }
 `;
 

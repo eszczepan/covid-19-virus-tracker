@@ -6,7 +6,7 @@ const NavListItem = styled.li`
   justify-content: center;
   height: 100%;
   width: 100%;
-  padding: 0 1rem;
+  padding: 2rem 1rem;
   list-style: none;
   text-decoration: none;
   color: black;

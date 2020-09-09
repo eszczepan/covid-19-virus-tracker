@@ -6,10 +6,28 @@ import MainTable from "../components/organisms/MainTable/MainTable";
 import SideTable from "../components/organisms/SideTable/SideTable";
 import { sortData } from "../utils";
 
+const StyledHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+`;
+
 const StyledForm = styled.form`
   display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  select {
+    margin-left: 3rem;
+    max-width: 20rem;
+    padding: 0.5rem 1rem;
+    outline-width: 0;
+    border: none;
+    border-radius: 10px;
+  }
+  option {
+    border: none;
+  }
 `;
 
 const StyledWrapper = styled.div`
@@ -90,24 +108,27 @@ const Home = () => {
     <MainTemplate>
       <CasesProvider>
         <StyledWrapper>
-          <StyledForm>
-            <label htmlFor="countries">Stats Overview</label>
-            <select
-              name="countries"
-              id="countries"
-              value={country}
-              onChange={onCountryChange}
-            >
-              <option value="ALL" key="Global">
-                Global
-              </option>
-              {countries.map((country) => (
-                <option value={country.value} key={country.name}>
-                  {country.name}
+          <StyledHeader>
+            <p>Live</p>
+            <StyledForm>
+              <label htmlFor="countries">Stats Overview</label>
+              <select
+                name="countries"
+                id="countries"
+                value={country}
+                onChange={onCountryChange}
+              >
+                <option value="ALL" key="Global">
+                  Global
                 </option>
-              ))}
-            </select>
-          </StyledForm>
+                {countries.map((country) => (
+                  <option value={country.value} key={country.name}>
+                    {country.name}
+                  </option>
+                ))}
+              </select>
+            </StyledForm>
+          </StyledHeader>
           <MainTable
             countryInfo={countryInfo}
             mapCenter={mapCenter}

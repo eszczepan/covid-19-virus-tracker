@@ -4,7 +4,7 @@ import MainTemplate from "../templates/MainTemplate";
 const About = () => {
   return (
     <MainTemplate>
-      <h1>Hello About!!!</h1>
+      <h1 style={{ textAlign: "center" }}>Work in progress...</h1>
     </MainTemplate>
   );
 };
