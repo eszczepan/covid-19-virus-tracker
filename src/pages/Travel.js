@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 import TravelTemplate from "../templates/TravelTemplate";
 import TravelCard from "../components/molecules/TravelCard/TravelCard";
+
+const StyledHeader = styled.h2`
+  @media (max-width: 760px) {
+    font-size: ${({ theme }) => theme.fontSize.s};
+  }
+`;
 
 const Travel = () => {
   const [travelInfo, setTravelInfo] = useState([]);
@@ -14,9 +21,10 @@ const Travel = () => {
   }, []);
   return (
     <TravelTemplate>
-      <h2>Travel Alert Information</h2>
+      <StyledHeader>Travel Alert Information</StyledHeader>
       {travelInfo.map(({ countryName, alertMessage, publishedDate }) => (
         <TravelCard
+          key={countryName}
           country={countryName}
           message={alertMessage}
           date={publishedDate}

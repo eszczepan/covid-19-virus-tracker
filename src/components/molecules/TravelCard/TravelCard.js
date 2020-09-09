@@ -11,12 +11,21 @@ const StyledWrapper = styled.div`
   p {
     white-space: pre-wrap;
     line-height: 3rem;
+    @media (max-width: 760px) {
+      font-size: ${({ theme }) => theme.fontSize.xs};
+    }
   }
 `;
 
 const StyledHeader = styled.div`
   display: flex;
   justify-content: space-between;
+  h2,
+  h3 {
+    @media (max-width: 760px) {
+      font-size: ${({ theme }) => theme.fontSize.s};
+    }
+  }
 `;
 
 const TravelCard = ({ country, message, date }) => {

@@ -11,6 +11,11 @@ const StyledHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
+  p {
+    @media (max-width: 760px) {
+      font-size: ${({ theme }) => theme.fontSize.xs};
+    }
+  }
 `;
 
 const StyledForm = styled.form`
@@ -24,9 +29,15 @@ const StyledForm = styled.form`
     outline-width: 0;
     border: none;
     border-radius: 10px;
+    @media (max-width: 760px) {
+      max-width: 10rem;
+      margin-left: 0.5rem;
+    }
   }
-  option {
-    border: none;
+  label {
+    @media (max-width: 760px) {
+      font-size: ${({ theme }) => theme.fontSize.xs};
+    }
   }
 `;
 

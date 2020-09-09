@@ -49,6 +49,9 @@ const StyledNewsCard = styled.li`
     @media (max-width: 760px) {
       font-size: ${({ theme }) => theme.fontSize.xs};
     }
+    @media (max-width: 450px) {
+      font-size: ${({ theme }) => theme.fontSize.xxs};
+    }
   }
 `;
 

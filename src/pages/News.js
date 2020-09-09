@@ -61,7 +61,6 @@ const News = () => {
 
   const onCountryChange = async (e) => {
     const country = e.target.value;
-    console.log(country);
     const url =
       country === "ALL"
         ? "https://api.coronatracker.com/news/trending"

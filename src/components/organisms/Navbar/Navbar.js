@@ -16,7 +16,6 @@ const StyledWrapper = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  padding-left: 2rem;
   margin: 0 auto;
   @media (max-width: 1023px) {
     justify-content: space-between;
