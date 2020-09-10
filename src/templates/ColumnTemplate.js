@@ -7,7 +7,7 @@ import Navbar from "../components/organisms/Navbar/Navbar";
 
 const StyledWrapper = styled.div`
   max-width: 140rem;
-  margin: 0 auto;
+  margin: 0 auto 4rem;
   padding: 2rem;
   @media (max-width: 1400px) {
     max-width: 100rem;
@@ -19,7 +19,7 @@ const StyledMain = styled.main`
   flex-direction: column;
 `;
 
-const MainTemplate = ({ children }) => {
+const ColumnTemplate = ({ children }) => {
   return (
     <>
       <GlobalStyle />
@@ -33,4 +33,4 @@ const MainTemplate = ({ children }) => {
   );
 };
 
-export default MainTemplate;
+export default ColumnTemplate;

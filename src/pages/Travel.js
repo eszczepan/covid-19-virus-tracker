@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import TravelTemplate from "../templates/TravelTemplate";
+import ColumnTemplate from "../templates/ColumnTemplate";
 import TravelCard from "../components/molecules/TravelCard/TravelCard";
 
 const StyledHeader = styled.h2`
@@ -20,7 +20,7 @@ const Travel = () => {
     getTravelData();
   }, []);
   return (
-    <TravelTemplate>
+    <ColumnTemplate>
       <StyledHeader>Travel Alert Information</StyledHeader>
       {travelInfo.map(({ countryName, alertMessage, publishedDate }) => (
         <TravelCard
@@ -30,7 +30,7 @@ const Travel = () => {
           date={publishedDate}
         />
       ))}
-    </TravelTemplate>
+    </ColumnTemplate>
   );
 };
 
