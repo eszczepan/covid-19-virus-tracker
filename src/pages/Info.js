@@ -6,6 +6,9 @@ import FaqCard from "../components/molecules/FaqCard/FaqCard";
 
 const StyledHeader = styled.h2`
   text-align: center;
+  @media (max-width: 760px) {
+    font-size: ${({ theme }) => theme.fontSize.l};
+  }
 `;
 
 const StyledWrapper = styled.div`

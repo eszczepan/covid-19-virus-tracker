@@ -7,7 +7,7 @@ import Navbar from "../components/organisms/Navbar/Navbar";
 
 const StyledWrapper = styled.div`
   max-width: 140rem;
-  margin: 0 auto 4rem;
+  margin: 0 auto 3rem;
   padding: 2rem;
   @media (max-width: 1400px) {
     max-width: 100rem;

@@ -11,16 +11,17 @@ const StyledWrapper = styled.div`
     align-items: center;
     cursor: pointer;
     :hover {
-      border-left: 3px solid ${({ theme }) => theme.tertiraty};
+      border-left: 3px solid ${({ theme }) => theme.tertiary};
       transition: all 0.1s ease;
     }
     button {
       font-size: ${({ theme }) => theme.fontSize.l};
-      width: 2.5rem;
-      height: 2.5rem;
+      min-width: 25px;
+      height: 25px;
+      margin-left: 1rem;
       background-color: white;
-      color: ${({ theme }) => theme.tertiraty};
-      border: 1px solid ${({ theme }) => theme.tertiraty};
+      color: ${({ theme }) => theme.tertiary};
+      border: 1px solid ${({ theme }) => theme.tertiary};
       border-radius: 50%;
       outline: none;
       cursor: pointer;
@@ -31,17 +32,24 @@ const StyledWrapper = styled.div`
     line-height: 3rem;
     @media (max-width: 760px) {
       font-size: ${({ theme }) => theme.fontSize.xs};
+      padding: 0.5rem;
     }
   }
   .question {
-    color: ${({ theme }) => theme.tertiraty};
+    color: ${({ theme }) => theme.tertiary};
     font-weight: ${({ theme }) => theme.bold};
     font-size: ${({ theme }) => theme.fontSize.xl};
+    @media (max-width: 760px) {
+      font-size: ${({ theme }) => theme.fontSize.l};
+    }
+    @media (max-width: 460px) {
+      font-size: ${({ theme }) => theme.fontSize.s};
+    }
   }
   .answer {
     display: none;
     padding: 2rem 0 0;
-    border-top: 1px solid ${({ theme }) => theme.tertiraty};
+    border-top: 1px solid ${({ theme }) => theme.tertiary};
     white-space: pre-wrap;
   }
   .open {
