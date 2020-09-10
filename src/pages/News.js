@@ -15,6 +15,11 @@ const StyledForm = styled.form`
     border: none;
     border-radius: 10px;
   }
+  label {
+    @media (max-width: 760px) {
+      font-size: ${({ theme }) => theme.fontSize.s};
+    }
+  }
   option {
     border: none;
     border-radius: 10px;
