@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import MainTemplate from "../templates/MainTemplate";
 import NewsCard from "../components/molecules/NewsCard/NewsCard";
+import Spinner from "../components/atoms/Spinner/Spinner";
 
 const StyledForm = styled.form`
   display: flex;
@@ -34,6 +35,7 @@ const News = () => {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("ALL");
   const [news, setNews] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetch("https://api.coronatracker.com/news/trending")
@@ -45,6 +47,7 @@ const News = () => {
 
   useEffect(() => {
     const getCountriesData = async () => {
+      setIsLoading(true);
       await fetch("https://api.coronatracker.com/v2/analytics/country")
         .then((response) => response.json())
         .then((data) => {
@@ -59,12 +62,14 @@ const News = () => {
             )
           );
         });
+      setIsLoading(false);
     };
 
     getCountriesData();
   }, []);
 
   const onCountryChange = async (e) => {
+    setIsLoading(true);
     const country = e.target.value;
     const url =
       country === "ALL"
@@ -77,6 +82,7 @@ const News = () => {
         setCountry(country);
         setNews(data.items);
       });
+    setIsLoading(false);
   };
 
   return (
@@ -101,29 +107,33 @@ const News = () => {
           </select>
         </StyledForm>
         <StyledList>
-          {news.length === 0
-            ? "No Latest News"
-            : news.map(
-                ({
-                  nid,
-                  title,
-                  description,
-                  author,
-                  urlToImage,
-                  url,
-                  siteName,
-                }) => (
-                  <NewsCard
-                    key={nid}
-                    title={title}
-                    description={description}
-                    author={author}
-                    image={urlToImage}
-                    link={url}
-                    site={siteName}
-                  />
-                )
-              )}
+          {isLoading ? (
+            <Spinner />
+          ) : news.length === 0 ? (
+            "No Latest News"
+          ) : (
+            news.map(
+              ({
+                nid,
+                title,
+                description,
+                author,
+                urlToImage,
+                url,
+                siteName,
+              }) => (
+                <NewsCard
+                  key={nid}
+                  title={title}
+                  description={description}
+                  author={author}
+                  image={urlToImage}
+                  link={url}
+                  site={siteName}
+                />
+              )
+            )
+          )}
         </StyledList>
       </div>
     </MainTemplate>
