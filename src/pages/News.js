@@ -4,6 +4,10 @@ import MainTemplate from "../templates/MainTemplate";
 import NewsCard from "../components/molecules/NewsCard/NewsCard";
 import Spinner from "../components/atoms/Spinner/Spinner";
 
+const StyledWrapper = styled.div`
+  width: 100%;
+`;
+
 const StyledForm = styled.form`
   display: flex;
   align-items: center;
@@ -87,7 +91,7 @@ const News = () => {
 
   return (
     <MainTemplate>
-      <div>
+      <StyledWrapper>
         <StyledForm>
           <label htmlFor="countries">Latest News: </label>
           <select
@@ -135,7 +139,7 @@ const News = () => {
             )
           )}
         </StyledList>
-      </div>
+      </StyledWrapper>
     </MainTemplate>
   );
 };
