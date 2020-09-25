@@ -14,7 +14,13 @@ const InfoHeader = styled.div`
   margin-bottom: 1rem;
 `;
 
-const MainTable = ({ countryInfo, mapCenter, mapZoom, mapCountries }) => {
+const MainTable = ({
+  countryInfo,
+  mapCenter,
+  mapZoom,
+  mapCountries,
+  isLoading,
+}) => {
   const { cases } = useContext(CasesTypeContext);
   const [casesType, setCasesType] = cases;
   return (
@@ -27,6 +33,7 @@ const MainTable = ({ countryInfo, mapCenter, mapZoom, mapCountries }) => {
           title="Cases"
           cases={countryInfo.cases}
           today={prettyPrintStat(countryInfo.todayCases)}
+          isLoading={isLoading}
         />
 
         <InfoBox
@@ -36,6 +43,7 @@ const MainTable = ({ countryInfo, mapCenter, mapZoom, mapCountries }) => {
           title="Deaths"
           cases={countryInfo.deaths}
           today={prettyPrintStat(countryInfo.todayDeaths)}
+          isLoading={isLoading}
         />
         <InfoBox
           active={casesType === "recovered"}
@@ -43,6 +51,7 @@ const MainTable = ({ countryInfo, mapCenter, mapZoom, mapCountries }) => {
           title="Recovered"
           cases={countryInfo.recovered}
           today={prettyPrintStat(countryInfo.todayRecovered)}
+          isLoading={isLoading}
         />
       </InfoHeader>
       <Map

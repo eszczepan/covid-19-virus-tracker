@@ -1,5 +1,4 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 
 const spin = keyframes`
    0% {
@@ -10,10 +9,10 @@ const spin = keyframes`
   }
 `;
 
-const StyledSpinner = styled.div`
+const Spinner = styled.div`
   animation: ${spin} 1.4s infinite linear;
   font-size: 0.5rem;
-  margin: 1.5rem auto;
+  margin: 4rem auto;
   text-indent: -9999em;
   width: 10rem;
   height: 10rem;
@@ -29,7 +28,7 @@ const StyledSpinner = styled.div`
   :before {
     width: 50%;
     height: 50%;
-    background: ${({ theme }) => theme.primary};
+    background-color: ${({ theme }) => theme.primary};
     border-radius: 100% 0 0 0;
     position: absolute;
     top: 0;
@@ -37,7 +36,7 @@ const StyledSpinner = styled.div`
     content: "";
   }
   :after {
-    background: #f5f5f5;
+    background-color: #f5f5f5;
     width: 80%;
     height: 80%;
     border-radius: 50%;
@@ -49,20 +48,20 @@ const StyledSpinner = styled.div`
     bottom: 0;
     right: 0;
   }
+  ${({ info }) =>
+    info &&
+    css`
+      width: 8rem;
+      height: 8rem;
+      margin: 0 auto;
+      :after {
+        background-color: white;
+      }
+      @media (max-width: 460px) {
+        width: 4rem;
+        height: 4rem;
+      }
+    `}
 `;
-
-const StyledDiv = styled.div`
-  min-height: 100%;
-  margin-top: 15rem;
-  @media (max-width: 760px) {
-    margin-top: 5rem;
-  }
-`;
-
-const Spinner = () => (
-  <StyledDiv>
-    <StyledSpinner />
-  </StyledDiv>
-);
 
 export default Spinner;

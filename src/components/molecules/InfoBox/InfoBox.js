@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Spinner from "../../atoms/Spinner/Spinner";
 
 const StyledBox = styled.div`
   background-color: white;
@@ -36,8 +37,20 @@ const StyledBox = styled.div`
   }
 `;
 
-const InfoBox = ({ title, cases, today, active, isRed, ...props }) => {
-  return (
+const InfoBox = ({
+  title,
+  cases,
+  today,
+  active,
+  isRed,
+  isLoading,
+  ...props
+}) => {
+  return isLoading ? (
+    <StyledBox>
+      <Spinner info />
+    </StyledBox>
+  ) : (
     <StyledBox onClick={props.onClick} active={active} isRed={isRed}>
       <p>
         {title === "Cases" && "Coronavirus"} {title}

@@ -47,6 +47,7 @@ const StyledCircle = styled.div`
 
 const FlexDiv = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 const StyledForm = styled.form`
@@ -94,6 +95,7 @@ const Home = () => {
   });
   const [mapZoom, setMapZoom] = useState(2);
   const [mapCountries, setMapCountries] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
@@ -105,6 +107,7 @@ const Home = () => {
 
   useEffect(() => {
     const getCountriesData = async () => {
+      setIsLoading(true);
       await fetch("https://disease.sh/v3/covid-19/countries")
         .then((response) => response.json())
         .then((data) => {
@@ -117,12 +120,14 @@ const Home = () => {
           setCountries(countries);
           setMapCountries(data);
         });
+      setIsLoading(false);
     };
     getCountriesData();
   }, []);
 
   const onCountryChange = async (e) => {
     const countryCode = e.target.value;
+    setIsLoading(true);
 
     const url =
       countryCode === "ALL"
@@ -144,6 +149,7 @@ const Home = () => {
           setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
           setMapZoom(4);
         }
+        setIsLoading(false);
       });
   };
   return (
@@ -179,6 +185,7 @@ const Home = () => {
             mapCenter={mapCenter}
             mapZoom={mapZoom}
             mapCountries={mapCountries}
+            isLoading={isLoading}
           />
         </StyledWrapper>
         <SideTable countries={tableData} />
