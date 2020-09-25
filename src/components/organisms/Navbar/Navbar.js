@@ -52,7 +52,9 @@ const Navbar = () => {
   return (
     <Nav>
       <StyledWrapper>
-        <Logo />
+        <Logo as={NavLink} to={routes.home}>
+          Covid-19 Virus Tracker
+        </Logo>
         <BurgerButton onClick={() => setIsOpen(!isOpen)} />
         <StyledList isOpen={isOpen}>
           <NavListItem as={NavLink} to={routes.home}>
