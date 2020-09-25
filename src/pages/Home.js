@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { CasesProvider } from "../context";
 import MainTemplate from "../templates/MainTemplate";
 import MainTable from "../components/organisms/MainTable/MainTable";
@@ -16,6 +16,37 @@ const StyledHeader = styled.div`
       font-size: ${({ theme }) => theme.fontSize.xs};
     }
   }
+`;
+
+const pulse = keyframes`
+
+0% {
+		transform: scale(0.8);
+		box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.7);
+	}
+	
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(255, 82, 82, 0);
+	}
+	
+	100% {
+		transform: scale(0.8);
+		box-shadow: 0 0 0 0 rgba(255, 82, 82, 0);
+	}
+`;
+
+const StyledCircle = styled.div`
+  background-color: rgba(255, 82, 82, 1);
+  border-radius: 50%;
+  animation: ${pulse} 2s infinite;
+  height: 1.8rem;
+  width: 1.8rem;
+  margin-right: 1rem;
+`;
+
+const FlexDiv = styled.div`
+  display: flex;
 `;
 
 const StyledForm = styled.form`
@@ -120,7 +151,10 @@ const Home = () => {
       <CasesProvider>
         <StyledWrapper>
           <StyledHeader>
-            <p>Live</p>
+            <FlexDiv>
+              <StyledCircle />
+              <p>Live</p>
+            </FlexDiv>
             <StyledForm>
               <label htmlFor="countries">Stats Overview</label>
               <select
