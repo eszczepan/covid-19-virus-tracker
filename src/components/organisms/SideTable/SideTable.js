@@ -53,7 +53,7 @@ const StyledTableData = styled.td`
   text-align: center;
 `;
 
-const SideTable = ({ countries, flag }) => {
+const SideTable = ({ countries }) => {
   return (
     <StyledWrapper>
       <StyledList>
@@ -67,7 +67,7 @@ const SideTable = ({ countries, flag }) => {
               </tr>
             </thead>
             <tbody>
-              {countries.map(({ country, cases, countryInfo }) => (
+              {countries.map(({ country, cases }) => (
                 <StyledTableRow key={country}>
                   <td>{country}</td>
                   <StyledTableData>
