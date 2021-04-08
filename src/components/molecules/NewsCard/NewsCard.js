@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { formatDate } from "../../../utils";
+
 const StyledNewsCard = styled.li`
   display: flex;
   padding: 1.5rem;
@@ -67,7 +69,7 @@ const StyledLink = styled.a`
   text-decoration: none;
 `;
 
-const NewsCard = ({ title, description, author, image, link, site }) => {
+const NewsCard = ({ title, description, author, image, link, site, date }) => {
   return (
     <StyledNewsCard>
       {image && <img src={image} alt={site} />}
@@ -75,7 +77,7 @@ const NewsCard = ({ title, description, author, image, link, site }) => {
         <StyledLink href={link} target="_blank">
           <h2>{title}</h2>
           <p className="author">
-            {author && `${author} |`} {site}
+            {`${formatDate(date)} |`} {author && `${author} |`} {site}
           </p>
           <p className="description">{description}</p>
           <p className="read-more">Read more</p>

@@ -96,3 +96,10 @@ export const nFormatter = (num) => {
   }
   return num;
 };
+
+export const formatDate = (str) => {
+  const strArr = str.split("");
+  const time = strArr.slice(11, 16).join("");
+  const date = strArr.slice(0, 10).join("");
+  return `${time} | ${date}`;
+};

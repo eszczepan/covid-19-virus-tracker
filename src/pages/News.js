@@ -45,6 +45,7 @@ const News = () => {
                 urlToImage,
                 url,
                 siteName,
+                publishedAt,
               }) => (
                 <NewsCard
                   key={nid}
@@ -54,6 +55,7 @@ const News = () => {
                   image={urlToImage}
                   link={url}
                   site={siteName}
+                  date={publishedAt}
                 />
               )
             )
