@@ -30,7 +30,7 @@ const StyledTable = styled.table`
 `;
 const StyledDiv = styled.div`
   height: 45rem;
-  overflow: scroll;
+  overflow-y: scroll;
   margin-bottom: 3rem;
   @media (max-width: 1400px) {
     height: 35rem;
