@@ -147,7 +147,7 @@ const Home = () => {
           setMapZoom(2);
         } else {
           setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
-          setMapZoom(4);
+          setTimeout(() => setMapZoom(4), 500);
         }
         setIsLoading(false);
       });
