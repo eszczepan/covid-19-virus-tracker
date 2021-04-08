@@ -80,3 +80,19 @@ export const showDataOnMap = (data, casesType = "cases") =>
       </Popup>
     </Circle>
   ));
+
+export const nFormatter = (num) => {
+  if (num >= 1000000000) {
+    return (num / 1000000000).toFixed(2).replace(/\.0$/, "") + " bilion";
+  }
+  if (num >= 1000000) {
+    return (num / 1000000).toFixed(2).replace(/\.0$/, "") + " million";
+  }
+  if (num >= 100000) {
+    return (num / 1000).toFixed(2).replace(/\.0$/, "") + "k";
+  }
+  if (num >= 10000) {
+    return (num / 1000).toFixed(2).replace(/\.0$/, "") + "k";
+  }
+  return num;
+};

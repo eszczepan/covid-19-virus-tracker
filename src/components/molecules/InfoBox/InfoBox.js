@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+
+import { nFormatter } from "../../../utils";
 import Spinner from "../../atoms/Spinner/Spinner";
 
 const StyledBox = styled.div`
@@ -58,7 +60,7 @@ const InfoBox = ({
       <p>
         <strong>{today}</strong>
       </p>
-      <p>{cases} Total</p>
+      <p>{nFormatter(cases)} Total</p>
     </StyledBox>
   );
 };
