@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { formatDate } from "../../../utils";
+import { formatDate } from '../../../utils';
 
 const StyledNewsCard = styled.li`
   display: flex;
