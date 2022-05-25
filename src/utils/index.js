@@ -16,15 +16,15 @@ export const prettyPrintStat = (stat) =>
 const casesTypeColors = {
   cases: {
     hex: "#CC1034",
-    multiplier: 150,
+    multiplier: 50,
   },
   recovered: {
     hex: "#7dd71d",
-    multiplier: 200,
+    multiplier: 100,
   },
   deaths: {
     hex: "#fb4443",
-    multiplier: 500,
+    multiplier: 150,
   },
 };
 
