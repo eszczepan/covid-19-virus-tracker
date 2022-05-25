@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import numeral from "numeral";
-import { Circle, Popup } from "react-leaflet";
+import React from 'react';
+import styled from 'styled-components';
+import numeral from 'numeral';
+import { Circle, Popup } from 'react-leaflet';
 
 export const sortData = (data) => {
   const sortedData = [...data];
@@ -9,22 +9,22 @@ export const sortData = (data) => {
 };
 
 export const prettyPrintStat = (stat) =>
-  stat ? `+${numeral(stat).format("0a")}` : "0 today";
+  stat ? `+${numeral(stat).format('0a')}` : '0 today';
 
 //Draw circles on the map
 
 const casesTypeColors = {
   cases: {
-    hex: "#CC1034",
+    hex: '#CC1034',
     multiplier: 50,
   },
   recovered: {
-    hex: "#7dd71d",
-    multiplier: 100,
+    hex: '#7dd71d',
+    multiplier: 45,
   },
   deaths: {
-    hex: "#fb4443",
-    multiplier: 150,
+    hex: '#fb4443',
+    multiplier: 350,
   },
 };
 
@@ -48,7 +48,7 @@ const StyledWrapper = styled.div`
   }
 `;
 
-export const showDataOnMap = (data, casesType = "cases") =>
+export const showDataOnMap = (data, casesType = 'cases') =>
   data.map((country, id) => (
     <Circle
       key={id}
@@ -68,13 +68,13 @@ export const showDataOnMap = (data, casesType = "cases") =>
           />
           <div className="country">{country.country}</div>
           <div className="cases">
-            Cases: {numeral(country.cases).format("0,0")}
+            Cases: {numeral(country.cases).format('0,0')}
           </div>
           <div className="recovered">
-            Recovered: {numeral(country.recovered).format("0,0")}
+            Recovered: {numeral(country.recovered).format('0,0')}
           </div>
           <div className="deaths">
-            Deaths: {numeral(country.deaths).format("0,0")}
+            Deaths: {numeral(country.deaths).format('0,0')}
           </div>
         </StyledWrapper>
       </Popup>
@@ -83,23 +83,23 @@ export const showDataOnMap = (data, casesType = "cases") =>
 
 export const nFormatter = (num) => {
   if (num >= 1000000000) {
-    return (num / 1000000000).toFixed(2).replace(/\.0$/, "") + " bilion";
+    return (num / 1000000000).toFixed(2).replace(/\.0$/, '') + ' bilion';
   }
   if (num >= 1000000) {
-    return (num / 1000000).toFixed(2).replace(/\.0$/, "") + " million";
+    return (num / 1000000).toFixed(2).replace(/\.0$/, '') + ' million';
   }
   if (num >= 100000) {
-    return (num / 1000).toFixed(2).replace(/\.0$/, "") + "k";
+    return (num / 1000).toFixed(2).replace(/\.0$/, '') + 'k';
   }
   if (num >= 10000) {
-    return (num / 1000).toFixed(2).replace(/\.0$/, "") + "k";
+    return (num / 1000).toFixed(2).replace(/\.0$/, '') + 'k';
   }
   return num;
 };
 
 export const formatDate = (str) => {
-  const strArr = str.split("");
-  const time = strArr.slice(11, 16).join("");
-  const date = strArr.slice(0, 10).join("");
+  const strArr = str.split('');
+  const time = strArr.slice(11, 16).join('');
+  const date = strArr.slice(0, 10).join('');
   return `${time} | ${date}`;
 };
